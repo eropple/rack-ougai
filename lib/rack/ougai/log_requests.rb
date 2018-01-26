@@ -3,9 +3,10 @@ require 'time'
 module Rack
   module Ougai
     class LogRequests
-      def initialize(app, logger = nil)
+      def initialize(app, logger = nil, local: false)
         @app = app
         @logger = logger
+        @local = local
       end
 
       def call(env)
@@ -22,7 +23,7 @@ module Rack
         end_time = Time.now
 
         ret = {
-          time: start_time,
+          time: @local ? start_time : start_time.utc,
           usec: end_time.usec - start_time.usec,
           remote_addr: env['HTTP_X_FORWARDED_FOR'] || env["REMOTE_ADDR"],
           method: env[REQUEST_METHOD],
