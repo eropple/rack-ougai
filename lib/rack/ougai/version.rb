@@ -1,5 +1,5 @@
 module Rack
   module Ougai
-    VERSION = "0.2.2-pre1".freeze
+    VERSION = "0.2.2".freeze
   end
 end
