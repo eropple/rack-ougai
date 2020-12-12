@@ -19,12 +19,12 @@ module Rack
 
       private
 
-      def create_log(start_time, env, status, _headers)
+      def create_log(start_time, env, status, headers)
         end_time = Time.now
 
         ret = {
           time: @local ? start_time : start_time.utc,
-          usec: end_time.usec - start_time.usec,
+          usec: (end_time.to_f - start_time.to_f) * 10**6,
           remote_addr: env['HTTP_X_FORWARDED_FOR'] || env["REMOTE_ADDR"],
           method: env[REQUEST_METHOD],
           path: env[PATH_INFO],
@@ -34,6 +34,8 @@ module Rack
 
         request_id = env['HTTP_X_REQUEST_ID']
         ret[:request_id] = request_id unless request_id.nil?
+        content_version = headers['Content-Version']
+        ret[:content_version] = content_version unless content_version.nil?
 
         ret
       end
