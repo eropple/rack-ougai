@@ -7,13 +7,11 @@ module Rack
 
       def initialize(app, opts = {})
         @app = app
-
         @storage = opts[:storage] || proc { Thread.current }
       end
 
       def call(env)
         parent = env[Rack::RACK_LOGGER]
-
         request_id = env[REQUEST_ID_KEY]
 
         if request_id.nil?
