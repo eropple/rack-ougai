@@ -6,8 +6,8 @@ require "rack/ougai/version"
 Gem::Specification.new do |spec|
   spec.name          = "rack-ougai"
   spec.version       = Rack::Ougai::VERSION
-  spec.authors       = ["Toshimitsu Takahashi", "Ed Ropple"]
-  spec.email         = ["toshi@tilfin.com", "ed@edropple.com"]
+  spec.authors       = ["Toshimitsu Takahashi", "Ed Ropple", "Pablo Crivella"]
+  spec.email         = ["toshi@tilfin.com", "ed@edropple.com", "pablocrivella@gmail.com"]
 
   spec.summary       = "Rack integration for the Ougai logger."
   spec.homepage      = "https://github.com/eropple/rack-ougai"
