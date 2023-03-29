@@ -47,7 +47,7 @@ module Rack
       end
 
       def show_request_body?(req)
-        req.post? && req.content_type == CONTENT_TYPE_JSON
+        req.post? && req.content_type == CONTENT_TYPE_JSON && ENV["OUGAI_BODY_LOG"]
       end
     end
   end
