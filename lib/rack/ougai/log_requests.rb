@@ -28,7 +28,7 @@ module Rack
         ret = {
           time: @local ? start_time : start_time.utc,
           usec: end_time.usec - start_time.usec,
-          remote_addr: env['HTTP_X_FORWARDED_FOR'] || env['REMOTE_ADDR'],
+          remote_addr: env["HTTP_X_FORWARDED_FOR"] || env["REMOTE_ADDR"],
           method: env[REQUEST_METHOD],
           path: env[PATH_INFO],
           query: env[QUERY_STRING],
